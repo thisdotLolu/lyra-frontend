@@ -5,6 +5,10 @@ export interface LocationStates {
   "/#"?: {};
   "/home2"?: {};
   "/developers"?: {};
+  "/privacy"?: {};
+  "/faq"?: {};
+  "/faq/:page"?: {};
+  "/tos"?: {};
   "/nft-detailt"?: {};
   "/page-collection"?: {};
   "/page-search"?: {};
@@ -18,9 +22,6 @@ export interface LocationStates {
   "/blog-single"?: {};
   "/about"?: {};
   "/support"?: {};
-  "/faq"?: {};
-  "/tos"?: {};
-  "/privacy"?: {};
   "/contact"?: {};
   "/login"?: {};
   "/signup"?: {};

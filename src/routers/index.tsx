@@ -25,12 +25,19 @@ import PageUploadItem from "containers/PageUploadItem";
 import PageConnectWallet from "containers/PageConnectWallet";
 import PageHome2 from "containers/PageHome/PageHome2";
 import Developers from "containers/PageHome/Developers";
+import FAQ from "containers/PageHome/FAQ";
+import Privacy from "containers/PageHome/Privacy";
+import TOS from "containers/PageHome/TOS";
 
 export const pages: Page[] = [
   { path: "/", component: PageHome2 },
   { path: "/#", component: PageHome2 },
   { path: "/home2", component: PageHome },
   { path: "/developers", component: Developers },
+  { path: "/faq", component: FAQ },
+  { path: "/faq/:page", component: FAQ },
+  { path: "/privacy", component: Privacy },
+  { path: "/tos", component: TOS },
   { path: "/home-header-2", component: PageHome },
   { path: "/nft-detailt", component: NftDetailPage },
   { path: "/page-collection", component: PageCollection },

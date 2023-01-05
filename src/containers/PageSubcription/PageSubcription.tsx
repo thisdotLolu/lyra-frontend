@@ -20,8 +20,8 @@ const pricings: PricingItem[] = [
   {
     isPopular: false,
     name: "Free",
-    pricing: "$5",
-    per: "/mo",
+    pricing: "$0",
+    per: "/free",
     features: ["Browse GitNFT's", "Be allowed on the platform", "Social Networking"],
     desc: ` This is our very basic free & social plan. `,
   },
