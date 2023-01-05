@@ -1,11 +1,46 @@
+import React, { useState, useEffect } from "react";
+import ButtonPrimary from "shared/Button/ButtonPrimary";  
 import { Popover, Transition } from "@headlessui/react";
 import { avatarImgs } from "contains/fakeData";
 import GitHub_Cat from "images/github.jpg";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "shared/Avatar/Avatar";
+import { supabase } from "../../client";
+import { User, UserResponse } from "@supabase/gotrue-js/src/lib/types"
 
 export default function AvatarDropdown() {
+
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if(user === null) {
+      getProfile();
+    }
+
+  }, [user]);
+
+  async function getProfile(){
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if(user) {
+        setUser(user);
+        console.log(user);
+      }
+  }
+
+  async function signIn(){
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        scopes: 'user:email,read:project,read:user'
+      }
+    });
+
+    // TODO: store access token
+
+  }
+
   return (
     <div className="AvatarDropdown">
       <Popover className="relative">
@@ -32,12 +67,30 @@ export default function AvatarDropdown() {
                 <div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
                   <div className="relative grid grid-cols-1 gap-6 bg-white dark:bg-neutral-800 py-7 px-6">
                     <div className="flex items-center space-x-3">
-                      <Avatar imgUrl={GitHub_Cat} sizeClass="w-12 h-12" />
 
-                      <div className="flex-grow">
-                        <h4 className="font-semibold">LyraGit.Visitor</h4>
-                        <p className="text-xs mt-0.5"><Link to="/page-wallet">0xc4c16ab5ac7d...b21a</Link></p>
-                      </div>
+                      {(user === null)? 
+                        <>
+                          <Avatar imgUrl={GitHub_Cat} sizeClass="w-12 h-12" />
+
+                          <div className="flex-grow">
+                                <ButtonPrimary
+                                    onClick={signIn}
+                                    sizeClass="px-4 py-2 sm:px-5">
+                                  Sign in
+                                </ButtonPrimary>
+                          </div>
+                        </>:
+                        <>
+                          <Avatar imgUrl={user.user_metadata.avatar_url} sizeClass="w-12 h-12" />
+
+                          <div className="flex-grow">
+                                <>
+                                  <h4 className="font-semibold">@{ user.user_metadata.preferred_username }</h4>
+                                  <p className="text-xs mt-0.5"><Link to="/page-wallet">0xc4c16ab5ac7d...b21a</Link></p>
+                                </>
+                          </div>
+                        </>
+                      }
                     </div>
 
                     <div className="w-full border-b border-neutral-200 dark:border-neutral-700" />
