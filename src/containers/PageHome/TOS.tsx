@@ -16,16 +16,17 @@ function TOS() {
     <div className="nc-TOS relative overflow-hidden">
       <div className="container px-4">
         {/* SECTION HERO */}
-        <DeveloperHero />
+        <h1>Terms of service</h1>
       </div>
 
       <div className="container relative space-y-24 mb-24 lg:space-y-32 lg:mb-32">
 
         {/* SECTION */}
         <div className="relative py-20 lg:py-24">
-        <h2>Documentation</h2>
+        <h2>Terms of use</h2>
 	<ul>
-	    <li>foo</li>
+    	   <li><b>Uptime</b></li>
+    	   <li>We gurantee availability of our services through a global distributed high-availability network. In case of global catastrophe, like a world war, with nuclear impact, or a comet, it is possible that a global outage of our services occurs and you can not access your funds upon arrival. In any other case, the services in at least 1-2 national territories will be online, so will be parts of the Ethereum Blockchain.</li>
 	</ul>
 	</div>
       </div>
