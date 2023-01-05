@@ -36,7 +36,7 @@ export default function AvatarDropdown() {
 
                       <div className="flex-grow">
                         <h4 className="font-semibold">LyraGit.Visitor</h4>
-                        <p className="text-xs mt-0.5">0xc4c16ab5ac7d...b21a</p>
+                        <p className="text-xs mt-0.5"><Link to="/page-wallet">0xc4c16ab5ac7d...b21a</Link></p>
                       </div>
                     </div>
 

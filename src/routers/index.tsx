@@ -6,11 +6,13 @@ import Footer from "shared/Footer/Footer";
 import PageHome from "containers/PageHome/PageHome";
 import Page404 from "containers/Page404/Page404";
 import AuthorPage from "containers/AuthorPage/AuthorPage";
+import WalletPage from "containers/WalletPage/WalletPage";
 import AccountPage from "containers/AccountPage/AccountPage";
 import PageContact from "containers/PageContact/PageContact";
 import PageAbout from "containers/PageAbout/PageAbout";
 import PageSupport from "containers/PageSupport/PageSupport";
 import PageSignUp from "containers/PageSignUp/PageSignUp";
+import PageGetVerified from "containers/PageGetVerified/PageGetVerified";
 import PageLogin from "containers/PageLogin/PageLogin";
 import PageSubcription from "containers/PageSubcription/PageSubcription";
 import BlogPage from "containers/BlogPage/BlogPage";
@@ -34,6 +36,7 @@ export const pages: Page[] = [
   { path: "/page-collection", component: PageCollection },
   { path: "/page-search", component: PageSearch },
   { path: "/page-author", component: AuthorPage },
+  { path: "/your-wallet", component: WalletPage },
   { path: "/account", component: AccountPage },
   { path: "/page-upload-item", component: PageUploadItem },
   { path: "/connect-wallet", component: PageConnectWallet },
@@ -43,6 +46,7 @@ export const pages: Page[] = [
   { path: "/about", component: PageAbout },
   { path: "/support", component: PageSupport },
   { path: "/signup", component: PageSignUp },
+  { path: "/get-verified", component: PageGetVerified },
   { path: "/login", component: PageLogin },
   { path: "/subscription", component: PageSubcription },
 ];
