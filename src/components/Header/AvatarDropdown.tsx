@@ -41,6 +41,13 @@ export default function AvatarDropdown() {
 
   }
 
+  async function signOut(){
+    const { error } = await supabase.auth.signOut()
+    // @keo make site reload here or update AvatarDropdown
+  }
+
+
+
   return (
     <div className="AvatarDropdown">
       <Popover className="relative">
@@ -86,7 +93,7 @@ export default function AvatarDropdown() {
                           <div className="flex-grow">
                                 <>
                                   <h4 className="font-semibold">@{ user.user_metadata.preferred_username }</h4>
-                                  <p className="text-xs mt-0.5"><Link to="/page-wallet">0xc4c16ab5ac7d...b21a</Link></p>
+                                  <p className="text-xs mt-0.5"><Link to="/my-wallet">0xc4c16ab5ac7d...b21a</Link></p>
                                 </>
                           </div>
                         </>
@@ -320,7 +327,8 @@ export default function AvatarDropdown() {
                         </svg>
                       </div>
                       <div className="ml-4">
-                        <p className="text-sm font-medium ">{"Disconnect"}</p>
+                        <p className="text-sm font-medium ">
+                          <Link onClick={signOut} to="">{"Disconnect"}</Link></p>
                       </div>
                     </Link>
                   </div>

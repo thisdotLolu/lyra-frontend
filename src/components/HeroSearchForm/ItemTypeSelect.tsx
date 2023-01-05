@@ -6,18 +6,19 @@ import Checkbox from "shared/Checkbox/Checkbox";
 // DEMO DATA
 const typeOfProperty = [
   {
-    name: "Image",
-    description: "Items in JPG, PNG, GIF, SVG format",
+    name: "Funding",
+    description: "Venture Capital & Angel Investments",
     checked: true,
   },
   {
-    name: "Video",
-    description: "Items in MP4, WEBM, MP3 format",
-    checked: true,
+    name: "IP Purchase",
+    description: "Full Intellectual Property Purchase",
+    checked: true
   },
   {
-    name: "Audio",
-    description: "Items in MP4, WEBM, MP3 format",
+    name: "License",
+    description: "Licensing opportunitites for Repos or Commits",
+    checked: true
   },
 ];
 
@@ -81,7 +82,7 @@ const ItemTypeSelect: FC<ItemTypeSelectProps> = ({
                 Item type
               </span>
               <span className="block mt-1 text-sm text-neutral-400 leading-none font-light ">
-                Type of item
+                Type of GitNFT
               </span>
             </div>
           </Popover.Button>

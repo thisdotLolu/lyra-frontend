@@ -6,22 +6,22 @@ import Checkbox from "shared/Checkbox/Checkbox";
 // DEMO DATA
 const typeOfProperty = [
   {
-    name: "On Auction",
-    description: "Items being auctioned",
+    name: "Complete, Functional, Codebase",
+    description: "Product-ready",
     checked: true,
   },
   {
-    name: "Buy now",
-    description: "Items being auctioned",
+    name: "Proposal",
+    description: "Minor or No Code Commits",
     checked: true,
   },
   {
-    name: "New",
-    description: "Items being auctioned",
+    name: "Prototype",
+    description: "A functional but miniscule codebase",
   },
   {
-    name: "Has Offers",
-    description: "Items being auctioned",
+    name: "Proof-Of-Concept",
+    description: "A working PoC",
     checked: true,
   },
 ];
@@ -82,7 +82,7 @@ const PropertyTypeSelect: FC<PropertyTypeSelectProps> = ({
               </svg>
             </div>
             <div className="flex-grow">
-              <span className="block xl:text-lg font-semibold">Sale type</span>
+              <span className="block xl:text-lg font-semibold">GitNFT Flags</span>
               <span className="block mt-1 text-sm text-neutral-400 leading-none font-light ">
                 Type of sale
               </span>

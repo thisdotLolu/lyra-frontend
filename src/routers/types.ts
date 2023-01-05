@@ -5,6 +5,7 @@ export interface LocationStates {
   "/#"?: {};
   "/home2"?: {};
   "/developers"?: {};
+  "/cli"?: {};
   "/privacy"?: {};
   "/faq"?: {};
   "/faq/:page"?: {};
@@ -13,7 +14,7 @@ export interface LocationStates {
   "/page-collection"?: {};
   "/page-search"?: {};
   "/page-author"?: {};
-  "/your-wallet"?: {};
+  "/my-wallet"?: {};
   "/page-upload-item"?: {};
   "/home-header-2"?: {};
   "/connect-wallet"?: {};

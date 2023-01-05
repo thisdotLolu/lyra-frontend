@@ -19,13 +19,13 @@ const Developer: FC<DeveloperProps> = ({ className = "" }) => {
             Contribute to the funding & monetarization of code
 	  </span>
           <h2 className="font-bold text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl !leading-[115%] ">
-            LyraGit Developer
+            LyraGit CLI
           </h2>
           <ButtonPrimary
             sizeClass="px-6 py-3 lg:px-8 lg:py-4"
             fontSize="text-sm sm:text-base lg:text-lg font-medium"
           >
-            Explore LyraGit CLI
+            Launch LyraGit CLI
           </ButtonPrimary>
           <br />
         </div>

@@ -41,9 +41,7 @@ const PageSupport: FC<PageSupportProps> = ({ className = "" }) => {
         <SectionFounder />
         <div className="relative py-16">
           <BackgroundSection />
-        </div>
 
-            <div>
               <form className="grid grid-cols-1 gap-6" action="#" method="post">
                 <label className="block">
                   <Label>Full name</Label>
@@ -73,7 +71,6 @@ const PageSupport: FC<PageSupportProps> = ({ className = "" }) => {
                 </div>
               </form>
             </div>
-
       </div>
     </div>
   );

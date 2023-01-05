@@ -19,8 +19,8 @@ const LocationInput: FC<LocationInputProps> = ({
   autoFocus = false,
   onChange,
   onInputDone,
-  placeHolder = "Seach NFTs",
-  desc = "What are you looking for?",
+  placeHolder = "Search GitNFT's",
+  desc = "Which one are you looking for?",
   className = "nc-flex-1.5",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);

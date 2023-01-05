@@ -19,6 +19,11 @@ const otherPageChildMenus: NavItemType[] = [
   },
   {
     id: ncNanoId(),
+    href: "/cli",
+    name: "CLI"
+  },
+  {
+    id: ncNanoId(),
     href: "/page-collection",
     name: "Collection page",
   },

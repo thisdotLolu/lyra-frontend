@@ -18,14 +18,14 @@ const DEMO_DATA = [
     img: HIW1img,
     imgDark: HIW1img,
     title: "Search & Collections",
-    desc: "Sign up for free, no wallet connection required, and browse GitNFT's and Fonds, Plan your next Project or Browse your previous works for eligbility"
+    desc: "Sign up for free, No Wallet Connection Required, and Browse GitNFT's, Plan your next Project or Browse your previous works for eligbility"
   },
   {
     id: 2,
     img: HIW2img,
     imgDark: HIW2img,
     title: "Get serious",
-    desc: "Connect with wallet, fund your serverside NyanCoin wallet, and select your status as an Engineer, an Angel Investor or a Corporate Product Manager"
+    desc: "Connect with wallet, Fund your serverside Lyra wallet, and select your status as an Engineer, an Angel Investor or a Corporate Manager"
   },
   {
     id: 3,

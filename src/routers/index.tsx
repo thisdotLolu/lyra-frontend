@@ -25,6 +25,7 @@ import PageUploadItem from "containers/PageUploadItem";
 import PageConnectWallet from "containers/PageConnectWallet";
 import PageHome2 from "containers/PageHome/PageHome2";
 import Developers from "containers/PageHome/Developers";
+import CLI from "containers/PageHome/CLI";
 import FAQ from "containers/PageHome/FAQ";
 import Privacy from "containers/PageHome/Privacy";
 import TOS from "containers/PageHome/TOS";
@@ -34,6 +35,7 @@ export const pages: Page[] = [
   { path: "/#", component: PageHome2 },
   { path: "/home2", component: PageHome },
   { path: "/developers", component: Developers },
+  { path: "/cli", component: CLI },
   { path: "/faq", component: FAQ },
   { path: "/faq/:page", component: FAQ },
   { path: "/privacy", component: Privacy },
@@ -43,7 +45,7 @@ export const pages: Page[] = [
   { path: "/page-collection", component: PageCollection },
   { path: "/page-search", component: PageSearch },
   { path: "/page-author", component: AuthorPage },
-  { path: "/your-wallet", component: WalletPage },
+  { path: "/my-wallet", component: WalletPage },
   { path: "/account", component: AccountPage },
   { path: "/page-upload-item", component: PageUploadItem },
   { path: "/connect-wallet", component: PageConnectWallet },

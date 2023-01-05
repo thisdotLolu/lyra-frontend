@@ -13,7 +13,7 @@ const PriceRangeInput: FC<PriceRangeInputProps> = ({
   onChange,
   fieldClassName = "[ nc-hero-field-padding ]",
 }) => {
-  const [rangePrices, setRangePrices] = useState([0.01, 10]);
+  const [rangePrices, setRangePrices] = useState([8.43, 842.88]);
 
   return (
     <Popover className="flex relative flex-[1.5]">

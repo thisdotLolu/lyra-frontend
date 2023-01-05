@@ -24,14 +24,14 @@ const SectionBecomeAnAuthor: FC<SectionBecomeAnAuthorProps> = ({
           Earn free crypto <br /> with LyraGITt
         </h2>
         <span className="block mt-6 text-neutral-500 dark:text-neutral-400 ">
-          A creative agency that lead and inspire.
+          A ERC-20 Token for the LyraGIT platform
         </span>
         <div className="flex space-x-2 sm:space-x-5 mt-6 sm:mt-12">
           <ButtonPrimary href="/page-upload-item" className="">
-            Create item
+            Purchase LYRA
           </ButtonPrimary>
           <ButtonSecondary href="/page-search" className="">
-            Discover more
+            Learn more
           </ButtonSecondary>
         </div>
       </div>

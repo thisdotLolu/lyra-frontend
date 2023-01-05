@@ -89,10 +89,10 @@ const PageGetVerified: FC<PageGetVerifiedProps> = ({ className = "" }) => {
                         strokeLinejoin="round"
                       ></path>
                     </svg>
-                    <div className="flex text-sm text-neutral-6000 dark:text-neutral-300">
+                    <div className="flex text-center mx-auto text-sm text-neutral-6000 dark:text-neutral-300">
                       <label
                         htmlFor="file-upload"
-                        className="relative cursor-pointer  rounded-md font-medium text-primary-6000 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500"
+                        className="text-center relative items-center cursor-pointer  rounded-md font-medium text-primary-6000 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500"
                       >
                         <span>Upload a file</span>
                         <input
@@ -102,7 +102,7 @@ const PageGetVerified: FC<PageGetVerifiedProps> = ({ className = "" }) => {
                           className="sr-only"
                         />
                         <p className="pl-1">or drag and drop</p>
-                        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+                        <p className="text-xs text-center text-neutral-500 dark:text-neutral-400">
                           PNG, JPG, GIF up to 10MB
                         </p>
 		      </label>

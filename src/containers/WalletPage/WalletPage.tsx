@@ -1,4 +1,5 @@
-import React, { FC, Fragment, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { FC, Fragment } from "react";
 import { Helmet } from "react-helmet";
 import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import NcImage from "shared/NcImage/NcImage";
@@ -12,11 +13,14 @@ import ButtonDropDownShare from "components/ButtonDropDownShare";
 import SectionBecomeAnAuthor from "components/SectionBecomeAnAuthor/SectionBecomeAnAuthor";
 import SocialsList from "shared/SocialsList/SocialsList";
 import WithdrawButton from "components/WithdrawButton";
+import FundButton from "components/FundButton";
 import VerifyIcon from "components/VerifyIcon";
 import { Tab } from "@headlessui/react";
 import CardAuthorBox3 from "components/CardAuthorBox3/CardAuthorBox3";
 import ArchiveFilterListBox from "components/ArchiveFilterListBox";
 import SectionGridAuthorBox from "components/SectionGridAuthorBox/SectionGridAuthorBox";
+import { supabase } from "../../client";
+import { User, UserResponse } from "@supabase/gotrue-js/src/lib/types"
 
 export interface WalletPageProps {
   className?: string;
@@ -28,7 +32,39 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
     "GitNFTs",
   ]);
 
-  return (
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if(user === null) {
+      getProfile();
+    }
+
+  }, [user]);
+
+  async function getProfile(){
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if(user) {
+        setUser(user);
+        console.log(user);
+      }
+  }
+
+  async function signIn(){
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        scopes: 'user:email,read:project,read:user'
+      }
+    });
+
+    // TODO: store access token
+
+  }
+
+  getProfile();
+
+  return user? (
     <div className={`nc-WalletPage  ${className}`} data-nc-id="WalletPage">
       <Helmet>
         <title>Wallet || LyraGIT - Angel Investing in GitNFTs</title>
@@ -47,14 +83,14 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
           <div className="relative bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row">
             <div className="w-32 lg:w-44 flex-shrink-0 mt-12 sm:mt-0">
               <NcImage
-                src={nftsImgs[2]}
+                src={user.user_metadata.avatar_url}
                 containerClassName="aspect-w-1 aspect-h-1 rounded-3xl overflow-hidden"
               />
             </div>
             <div className="pt-5 md:pt-1 md:ml-6 xl:ml-14 flex-grow">
               <div className="max-w-screen-sm ">
                 <h2 className="inline-flex items-center text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                  <span>Your Wallet</span>
+                  <span>Your Wallet: @{ user.user_metadata.preferred_username }</span>
                 </h2>
                 <div className="flex items-center text-sm font-medium space-x-2.5 mt-2.5 text-green-600 cursor-pointer">
                   <span className="text-neutral-700 dark:text-neutral-300">
@@ -94,6 +130,11 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
                 ]}
                 containerClassName="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 cursor-pointer"
               />
+	      <FundButton
+                fontSize="text-sm md:text-base font-medium"
+                sizeClass="px-4 py-1 md:py-2.5 h-8 md:!h-10 sm:px-6 lg:px-8"
+              />
+
               <WithdrawButton
                 isVerified={true}
                 fontSize="text-sm md:text-base font-medium"
@@ -207,6 +248,10 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
 
       </div>
     </div>
+  ) : (
+  <div>
+  No wallet or user found
+  </div>
   );
 };
 

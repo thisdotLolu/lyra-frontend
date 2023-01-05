@@ -31,7 +31,7 @@ const WithdrawButton: FC<WithdrawButtonProps> = ({
       fontSize={fontSize}
       onClick={() => setIsVerifying(true)}
     >
-      Become VERIFIED
+      Verify 
     </ButtonPrimary>
  
   )
