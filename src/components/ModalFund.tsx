@@ -33,9 +33,9 @@ const ModalFund: FC<ModalFundProps> = ({ show, onCloseModalFund }) => {
         <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-200">
           Fund Wallet
         </h3>
-        <span className="text-sm">Are you sure you want to change price?</span>
+        <span className="text-sm">Are you sure you want to fund the serverside wallet?</span>
         <div className="mt-8 relative rounded-md shadow-sm">
-          <Input ref={textareaRef} defaultValue={"1.000"} type={"text"} />
+          <Input ref={textareaRef} defaultValue={"10"} type={"text"} />
 
           <div className="absolute inset-y-0 right-0 flex items-center">
             <label htmlFor="currency" className="sr-only">
@@ -47,8 +47,8 @@ const ModalFund: FC<ModalFundProps> = ({ show, onCloseModalFund }) => {
               className="focus:ring-indigo-500 focus:border-indigo-500 h-full py-0 pl-2 pr-7 border-transparent bg-transparent text-neutral-500 dark:text-neutral-300 sm:text-sm rounded-md"
             >
               <option>ETH</option>
-              <option>BC</option>
-              <option>BTH</option>
+              <option>USD</option>
+              <option>EUR</option>
             </select>
           </div>
         </div>

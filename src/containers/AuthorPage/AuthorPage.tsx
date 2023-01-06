@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useState } from "react";
+import React, { FC, Fragment, useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import BackgroundSection from "components/BackgroundSection/BackgroundSection";
 import NcImage from "shared/NcImage/NcImage";
@@ -17,6 +17,8 @@ import { Tab } from "@headlessui/react";
 import CardAuthorBox3 from "components/CardAuthorBox3/CardAuthorBox3";
 import ArchiveFilterListBox from "components/ArchiveFilterListBox";
 import SectionGridAuthorBox from "components/SectionGridAuthorBox/SectionGridAuthorBox";
+import { supabase } from "../../client";
+import { User, UserResponse } from "@supabase/gotrue-js/src/lib/types"
 
 export interface AuthorPageProps {
   className?: string;
@@ -24,17 +26,49 @@ export interface AuthorPageProps {
 
 const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
   let [categories] = useState([
-    "Collectibles",
+    "GitNFTs",
     "Created",
     "Liked",
     "Following",
     "Followers",
   ]);
 
-  return (
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    if(user === null) {
+      getProfile();
+    }
+
+  }, [user]);
+
+  async function getProfile(){
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if(user) {
+        setUser(user);
+        console.log(user);
+      }
+  }
+
+  async function signIn(){
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        scopes: 'user:email,read:project,read:user'
+      }
+    });
+
+    // TODO: store access token
+
+  }
+
+  //getProfile();
+
+  return user ? (
     <div className={`nc-AuthorPage  ${className}`} data-nc-id="AuthorPage">
       <Helmet>
-        <title>Creator || LyraGIT - Angel Investing in GitNFTs</title>
+        <title>Profile/Account || LyraGIT - Angel Investing in GitNFTs</title>
       </Helmet>
 
       {/* HEADER */}
@@ -50,14 +84,14 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
           <div className="relative bg-white dark:bg-neutral-900 dark:border dark:border-neutral-700 p-5 lg:p-8 rounded-3xl md:rounded-[40px] shadow-xl flex flex-col md:flex-row">
             <div className="w-32 lg:w-44 flex-shrink-0 mt-12 sm:mt-0">
               <NcImage
-                src={nftsImgs[2]}
+                src={user.user_metadata.avatar_url}
                 containerClassName="aspect-w-1 aspect-h-1 rounded-3xl overflow-hidden"
               />
             </div>
             <div className="pt-5 md:pt-1 md:ml-6 xl:ml-14 flex-grow">
               <div className="max-w-screen-sm ">
                 <h2 className="inline-flex items-center text-2xl sm:text-3xl lg:text-4xl font-semibold">
-                  <span>Dony Herrera</span>
+                  <span>{user.user_metadata.name}</span>
                   <VerifyIcon
                     className="ml-2"
                     iconClass="w-6 h-6 sm:w-7 sm:h-7 xl:w-8 xl:h-8"
@@ -86,9 +120,8 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
                 </div>
 
                 <span className="block mt-4 text-sm text-neutral-500 dark:text-neutral-400">
-                  Punk #4786 / An OG Cryptopunk Collector, hoarder of NFTs.
-                  Contributing to @ether_cards, an NFT Monetization Platform.
-                </span>
+                {user.user_metadata.bio}
+		</span>
               </div>
               <div className="mt-4 ">
                 <SocialsList itemClass="block w-7 h-7" />
@@ -231,7 +264,8 @@ const AuthorPage: FC<AuthorPageProps> = ({ className = "" }) => {
         <SectionBecomeAnAuthor />
       </div>
     </div>
-  );
+  ) : ( <div>Loading Profile ...</div> );
 };
 
 export default AuthorPage;
+

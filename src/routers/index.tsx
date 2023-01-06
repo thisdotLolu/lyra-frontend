@@ -47,7 +47,7 @@ export const pages: Page[] = [
   { path: "/page-author", component: AuthorPage },
   { path: "/my-wallet", component: WalletPage },
   { path: "/account", component: AccountPage },
-  { path: "/page-upload-item", component: PageUploadItem },
+  { path: "/my-gitnft", component: PageUploadItem },
   { path: "/connect-wallet", component: PageConnectWallet },
   { path: "/blog", component: BlogPage },
   { path: "/blog-single", component: BlogSingle },

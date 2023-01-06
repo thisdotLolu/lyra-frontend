@@ -141,10 +141,10 @@ const NavMobile: React.FC<NavMobileProps> = ({
         {data.map(_renderItem)}
       </ul>
       <div className="flex items-center justify-between py-6 px-5 space-x-2">
-        <ButtonPrimary href={"/page-upload-item"} className="!px-10">
+        <ButtonPrimary href={"/my-gitnft"} onClick={onClickClose} className="!px-10">
           Create
         </ButtonPrimary>
-        <ButtonSecondary href={"/connect-wallet"} className="flex-1">
+        <ButtonSecondary onClick={onClickClose} href={"/connect-wallet"} className="flex-1">
           Connect Wallet
         </ButtonSecondary>
       </div>

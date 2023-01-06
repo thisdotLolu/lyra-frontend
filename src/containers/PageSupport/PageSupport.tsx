@@ -18,6 +18,7 @@ export interface PageSupportProps {
 }
 
 const PageSupport: FC<PageSupportProps> = ({ className = "" }) => {
+
   return (
     <div
       className={`nc-PageSupport overflow-hidden relative ${className}`}
@@ -49,6 +50,7 @@ const PageSupport: FC<PageSupportProps> = ({ className = "" }) => {
                   <Input
                     placeholder="Example Doe"
                     type="text"
+                    name="fullname"
                     className="mt-1"
                   />
                 </label>
@@ -57,14 +59,15 @@ const PageSupport: FC<PageSupportProps> = ({ className = "" }) => {
 
                   <Input
                     type="email"
-                    placeholder="example@example.com"
+		    placeholder="example@example.com"
                     className="mt-1"
+                    name="email"
                   />
                 </label>
                 <label className="block">
                   <Label>Message</Label>
 
-                  <Textarea className="mt-1" rows={6} />
+                  <Textarea name="message" className="mt-1" rows={6} />
                 </label>
                 <div>
                   <ButtonPrimary type="submit">Send Message</ButtonPrimary>

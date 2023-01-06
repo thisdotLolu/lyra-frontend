@@ -28,7 +28,7 @@ const CardLarge1: FC<CardLarge1Props> = ({
   featuredImgUrl = nftsLargeImgs[0],
 }) => {
   const randomTitle = [
-    "NyanFund Delta",
+    "RISC V UltraScale+ ISR",
   ];
   return (
     <div
@@ -63,7 +63,7 @@ const CardLarge1: FC<CardLarge1Props> = ({
               </div>
               <div className="ml-3">
                 <div className="text-xs dark:text-neutral-400">Collection</div>
-                <div className="text-sm font-semibold ">NyanFund Delta</div>
+                <div className="text-sm font-semibold ">FPGAs/ASICs</div>
               </div>
             </div>
           </div>
@@ -75,10 +75,10 @@ const CardLarge1: FC<CardLarge1Props> = ({
                 Required Value
               </span>
               <span className="text-3xl xl:text-4xl font-semibold text-green-500">
-                10 ETH
+                422,30 ETH
               </span>
               <span className="text-lg text-neutral-400 sm:ml-3.5">
-                (≈ $3,221.22)
+                (≈ $500,000.00)
               </span>
             </div>
           </div>

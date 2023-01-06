@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
 import ButtonPrimary, { ButtonPrimaryProps } from "shared/Button/ButtonPrimary";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
+import ModalFund from "./ModalFund";
 
-export interface FundButtonProps extends ButtonPrimaryProps {
-}
+export interface FundButtonProps extends ButtonPrimaryProps {}
 
 const FundButton: FC<FundButtonProps> = ({
   className = "relative z-10",
@@ -13,15 +13,23 @@ const FundButton: FC<FundButtonProps> = ({
 
   const [isFunding, setIsFunding] = useState(false);
 
+  const openModalFund = () => setIsFunding(true);
+  const closeModalFund = () => setIsFunding(false);
+
   return ( 
     <ButtonPrimary
       className={className}
       sizeClass={sizeClass}
       fontSize={fontSize}
-      onClick={() => setIsFunding(true)}
+      onClick={() => openModalFund()}
     >
       Fund
-    </ButtonPrimary>
+    
+    <ModalFund
+      show={isFunding}
+      onCloseModalFund={closeModalFund}
+    />
+  </ButtonPrimary>
  
   )
 };

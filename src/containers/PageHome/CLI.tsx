@@ -31,7 +31,7 @@ function CLI() {
         for performance, such as the original Github CLI (gh).
 	<br />
 	<br />
-	<script src="https://gist.github.com/zdanl/ca3a17888e443af9a4fc394d7fc98485.js"></script>
+<script src="https://gist.github.com/zdanl/ca3a17888e443af9a4fc394d7fc98485.js"></script>
 
 
         </div>

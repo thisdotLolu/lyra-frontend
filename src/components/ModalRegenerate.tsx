@@ -31,12 +31,11 @@ const ModalRegenerate: FC<ModalRegenerateProps> = ({ show, onCloseModalRegenerat
     return (
       <form action="#">
         <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-200">
-          Regenerate Wallet
+          Regenerate Wallet 
         </h3>
-        <span className="text-sm">Are you sure you want to destroy the wallet and create a new one?</span>
-        
+        <span className="text-sm">Are you sure you want to destroy the wallet and generate a new one?</span>
         <div className="mt-4 space-x-3">
-          <ButtonPrimary type="submit">Yes Destroy</ButtonPrimary>
+          <ButtonPrimary type="submit">Destroy & Regenerate</ButtonPrimary>
           <ButtonSecondary type="button" onClick={onCloseModalRegenerate}>
             Cancel
           </ButtonSecondary>

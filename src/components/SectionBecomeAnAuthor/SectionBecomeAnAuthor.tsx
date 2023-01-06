@@ -27,7 +27,7 @@ const SectionBecomeAnAuthor: FC<SectionBecomeAnAuthorProps> = ({
           A ERC-20 Token for the LyraGIT platform
         </span>
         <div className="flex space-x-2 sm:space-x-5 mt-6 sm:mt-12">
-          <ButtonPrimary href="/page-upload-item" className="">
+          <ButtonPrimary href="/my-gitnft" className="">
             Purchase LYRA
           </ButtonPrimary>
           <ButtonSecondary href="/page-search" className="">

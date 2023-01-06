@@ -10,6 +10,7 @@ import { nftsImgs } from "contains/fakeData";
 import MySwitch from "components/MySwitch";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
 import NcImage from "shared/NcImage/NcImage";
+import Octocat from "images/octocat.svg";
 
 export interface PageUploadItemProps {
   className?: string;
@@ -17,27 +18,27 @@ export interface PageUploadItemProps {
 
 const plans = [
   {
-    name: "Crypto Legend - Professor",
+    name: "Hardware Design/FPGAs",
     featuredImage: nftsImgs[0],
   },
   {
-    name: "Crypto Legend - Professor",
+    name: "OS Security & Compartments",
     featuredImage: nftsImgs[1],
   },
   {
-    name: "Crypto Legend - Professor",
+    name: "Web Automation & Scraping",
     featuredImage: nftsImgs[2],
   },
   {
-    name: "Crypto Legend - Professor",
+    name: "Backend & API",
     featuredImage: nftsImgs[3],
   },
   {
-    name: "Crypto Legend - Professor",
+    name: "Mobile Apps",
     featuredImage: nftsImgs[4],
   },
   {
-    name: "Crypto Legend - Professor",
+    name: "SaaS / PaaS / Platforms / Communities",
     featuredImage: nftsImgs[5],
   },
 ];
@@ -58,11 +59,12 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
           {/* HEADING */}
           <div className="max-w-2xl">
             <h2 className="text-3xl sm:text-4xl font-semibold">
-              Create New Item
+              Create and Import GitNFT
             </h2>
             <span className="block mt-3 text-neutral-500 dark:text-neutral-400">
-              You can set preferred display name, create your profile URL and
-              manage other personal settings.
+              You can set preferred display name for the GitNFT, set your GitHub URL and
+              manage other settings such as tags and privacy, and of course,
+              price.
             </span>
           </div>
           <div className="w-full border-b-2 border-neutral-100 dark:border-neutral-700"></div>
@@ -78,20 +80,7 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
               <div className="mt-5 ">
                 <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-neutral-300 dark:border-neutral-6000 border-dashed rounded-xl">
                   <div className="space-y-1 text-center">
-                    <svg
-                      className="mx-auto h-12 w-12 text-neutral-400"
-                      stroke="currentColor"
-                      fill="none"
-                      viewBox="0 0 48 48"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      ></path>
-                    </svg>
+                    <NcImage src={Octocat} />
                     <div className="flex text-sm text-neutral-6000 dark:text-neutral-300">
                       <label
                         htmlFor="file-upload"
@@ -116,20 +105,21 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
             </div>
 
             {/* ---- */}
-            <FormItem label="Item Name">
-              <Input defaultValue="NFT name" />
+            <FormItem label="GitNFT Repo Name">
+              <Input defaultValue="GitNFT name" />
             </FormItem>
 
             {/* ---- */}
             <FormItem
               label="External link"
-              desc="LyraGITt will include a link to this URL on this item's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details."
+              desc="LyraGIT will include a link to this URL on this GitNFT's detail page, so that users can click to learn more about it. You are welcome to link to your own webpage with more details."
             >
               <div className="flex">
                 <span className="inline-flex items-center px-3 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   https://
                 </span>
-                <Input className="!rounded-l-none" placeholder="abc.com" />
+                <Input className="!rounded-l-none"
+                placeholder="https://lyralang.org" />
               </div>
             </FormItem>
 
@@ -138,10 +128,10 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
               label="Description"
               desc={
                 <div>
-                  The description will be included on the item's detail page
+                  The description will be included on the GitNFT's detail page
                   underneath its image.{" "}
-                  <span className="text-green-500">Markdown</span> syntax is
-                  supported.
+                  <span className="text-green-500">Markdown</span> syntax might
+                  be supported.
                 </div>
               }
             >
@@ -153,7 +143,8 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
             <div>
               <Label>Choose collection</Label>
               <div className="text-neutral-500 dark:text-neutral-400 text-sm">
-                Choose an exiting collection or create a new one
+                Choose a LyraGit collection or just use tags and we choose a
+                collection for you upon review.
               </div>
               <RadioGroup value={selected} onChange={setSelected}>
                 <RadioGroup.Label className="sr-only">
@@ -221,16 +212,16 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
             {/* ---- */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-2.5">
               {/* ---- */}
-              <FormItem label="Royalties">
-                <Input placeholder="20%" />
+              <FormItem label="How much is the funding or sales amount">
+                <Input placeholder="10,000 EUR" />
               </FormItem>
               {/* ---- */}
-              <FormItem label="Size">
-                <Input placeholder="165Mb" />
+              <FormItem label="What percentage are you willing to give up?">
+                <Input placeholder="100%" />
               </FormItem>
               {/* ---- */}
-              <FormItem label="Propertie">
-                <Input placeholder="Propertie" />
+              <FormItem label="How many contributors are there?">
+                <Input placeholder="Contributors" />
               </FormItem>
             </div>
 
@@ -246,14 +237,14 @@ const PageUploadItem: FC<PageUploadItemProps> = ({ className = "" }) => {
             {/* ---- */}
             <MySwitch
               enabled
-              label="Unlock once purchased"
-              desc="Content will be unlocked after successful transaction"
+              label="Classified, Privacy GitNFT"
+              desc="This will not be visible to the general public."
             />
 
             {/* ---- */}
             <div className="pt-2 flex flex-col sm:flex-row space-y-3 sm:space-y-0 space-x-0 sm:space-x-3 ">
-              <ButtonPrimary className="flex-1">Upload item</ButtonPrimary>
-              <ButtonSecondary className="flex-1">Preview item</ButtonSecondary>
+              <ButtonPrimary className="flex-1">Deploy GitNFT</ButtonPrimary>
+              <ButtonSecondary className="flex-1">Preview GitNFT</ButtonSecondary>
             </div>
           </div>
         </div>

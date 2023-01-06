@@ -11,8 +11,8 @@ export interface MySwitchProps {
 
 const MySwitch: FC<MySwitchProps> = ({
   enabled = false,
-  label = "Put on sale",
-  desc = "You’ll receive bids on this item",
+  label = "Licensing",
+  desc = "This is an open source project and therefore a licensing deal (on a single Commit)",
   className = "",
 }) => {
   const [enabledState, setEnabledState] = useState(enabled);

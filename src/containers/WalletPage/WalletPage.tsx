@@ -62,7 +62,7 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
 
   }
 
-  getProfile();
+  //getProfile();
 
   return user? (
     <div className={`nc-WalletPage  ${className}`} data-nc-id="WalletPage">
@@ -119,6 +119,9 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
  		</span>
               </div>
             </div>
+                  <span className="text-neutral-700 dark:text-neutral-300">
+                    40.4 ETH
+                  </span>
             <div className="absolute md:static left-5 top-4 sm:left-auto sm:top-5 sm:right-5 flex flex-row-reverse justify-end">
               <WalletMoreDropdown
                 actions={[
@@ -127,6 +130,17 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
                     name: "Regenerate Wallet",
                     icon: "las la-flag",
                   },
+	          {
+                    id: "fund",
+                    name: "Fund Wallet",
+                    icon: "las la-hippo",
+                  },
+	           {
+                    id: "withdraw",
+                    name: "Withdraw from Wallet",
+                    icon: "las la-hippo",
+                  },
+	      
                 ]}
                 containerClassName="w-8 h-8 md:w-10 md:h-10 flex items-center justify-center rounded-full bg-neutral-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:bg-neutral-800 cursor-pointer"
               />
@@ -137,6 +151,7 @@ const WalletPage: FC<WalletPageProps> = ({ className = "" }) => {
 
               <WithdrawButton
                 isVerified={true}
+                isWalletConnected={false}
                 fontSize="text-sm md:text-base font-medium"
                 sizeClass="px-4 py-1 md:py-2.5 h-8 md:!h-10 sm:px-6 lg:px-8"
               />

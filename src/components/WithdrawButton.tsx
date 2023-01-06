@@ -1,9 +1,11 @@
 import React, { FC, useState } from "react";
 import ButtonPrimary, { ButtonPrimaryProps } from "shared/Button/ButtonPrimary";
 import ButtonSecondary from "shared/Button/ButtonSecondary";
+import ModalTransferToken from "./ModalTransferToken";
 
 export interface WithdrawButtonProps extends ButtonPrimaryProps {
   isVerified?: boolean; // i really like this syntax. 
+  isWalletConnected?: boolean;
 }
 
 const WithdrawButton: FC<WithdrawButtonProps> = ({
@@ -14,16 +16,24 @@ const WithdrawButton: FC<WithdrawButtonProps> = ({
 
   const [isVerified, setIsVerifying] = useState(false);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
+  const [isTransfering, setIsTransfering] = useState(false);
+
+  const openModalTransferToken = () => setIsTransfering(true);
+  const closeModalTransferToken = () => setIsTransfering(false);
 
   return isVerified ? ( 
     <ButtonPrimary
       className={className}
       sizeClass={sizeClass}
       fontSize={fontSize}
-      onClick={() => setIsWithdrawing(true)}
+      onClick={() => openModalTransferToken()}
     >
       Withdraw
-    </ButtonPrimary>
+    <ModalTransferToken
+      show={isTransfering}
+      onCloseModalTransferToken={closeModalTransferToken}
+    />  
+  </ButtonPrimary>
   ) : (
     <ButtonPrimary
       className={className}
@@ -33,7 +43,6 @@ const WithdrawButton: FC<WithdrawButtonProps> = ({
     >
       Verify 
     </ButtonPrimary>
- 
   )
 };
 

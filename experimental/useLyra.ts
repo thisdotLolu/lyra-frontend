@@ -1,134 +1,61 @@
-import { useEffect, useState, createContext, ReactNode } from 'react';
-import { axios } from 'axios';
+/* standard libraries */
+import { useState, useEffect } from "react";
+import { axios } from "axios";
 
-import Web3Modal from 'web3modal';
+/* SupaBase */
+import { supabase } from "../../client";
+import { User, UserResponse } from "@supabase/gotrue-js/src/lib/types"
 
-export const LyraContext = createContext<any>({});
+/* Lyra SDK */
+import { Lyra.Types } from "lyra/types";
 
-export const LyraProvider = ({ children }: { children: ReactNode }) => {
-  const [isAuthenticated, setAuthenticationState] = useState<string | undefined>(undefined);
-  const [authType, setAuthType] = useState<string | undefined>(undefined);
-  const [userToken, setUserToken] = useState<string | undefined>(undefined);
-  const [sessionID, setSessionID] = useState<string | undefined>(undefined);
-  const [balance, setBalance] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+async function getGithubProfile(){
+    const { data: { githubUser } } = await supabase.auth.getUser();
 
-  /* This effect will fetch session ID if user has already connected to the API */
+    if(githubUser) {
+      setGithubUser(githubUser);
+      console.log(githubUser);
+    }
+}
+
+async function githubSignIn(){
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      scopes: 'user:email,read:project,read:user'
+    }
+  });
+
+  // TODO: store access token
+
+}
+
+//getProfile();
+
+function useLyra() {
+  // Initialize state with undefined width/height so server and client renders match
+  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+  const [githubUser, setGithubUser] = useState<User | null>(null);
+  const [user, setUser] = useState<LyraUser | null>(null);
+
   useEffect(() => {
-    async function checkConnection() {
-      try {
-        if (window && window.lyra) {
-          // Check if web3modal wallet connection is available on storage
-          if (localStorage.getItem("lyra")) {
-            await connectToLyra();
-          }
-        } else {
-          console.log('window or window.lyra is not available');
-        }
-      } catch (error) {
-        console.log(error, 'Catch error Lyra is not connected');
-      }
+    if(githubUser === null) {
+      getGithubProfile();
     }
-    checkConnection();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  const setAuthentication = async (provider: any) => {
-    try {
-
-      // got till here 
-      const signer = provider.getSigner();
-      if (signer) {
-        const web3Address = await signer.getAddress();
-        setAddress(web3Address);
-        getBalance(provider, web3Address);
-      }
-    } catch (error) {
-      console.log(
-        'Account not connected; logged from setWalletAddress function'
-      );
+    if (user === null) {
+      getLyraUser();
     }
-  };
 
-  const getBalance = async (provider: any, walletAddress: string) => {
-    const walletBalance = await provider.getBalance(walletAddress);
-    const balanceInEth = ethers.utils.formatEther(walletBalance);
-    setBalance(balanceInEth);
-  };
+    user.github = githubUser;
 
-  const getAuthenticationState = async (provider: any) => {
-    const authState =  await provider.getAuthState();
-    const balanceInEth = await provider.getBalanceInEth();
-    const userToken = 	await provider.getUserToken();
+  }, [user]);
+  return user;
+}
 
-    setUserToken(userToken);
-    setAuthState(authState);
-    setBalance(balanceInEth);
-  };
-
-  const disconnectLyra = () => {
-    setAuthState((Lyra as Types).VISITOR);
-    setBalance(undefined);
-    web3Modal();
-  };
-
-  const checkIfExtensionIsAvailable = () => {
-    if (
-      (window && window.lyra === undefined)
-    ) {
-      setError(true);
-      web3Modal && web3Modal.toggleModal();
-    }
-  };
-
-  const connectToLyra = async () => {
-    try {
-      setLoading(true);
-      checkIfExtensionIsAvailable();
-      const connection = web3Modal && (await web3Modal.connect());
-      const provider = new ethers.providers.Web3Provider(connection);
-      await subscribeProvider(connection);
-
-      setWalletAddress(provider);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(
-        error,
-        'got this error on connectToWallet catch block while connecting the wallet'
-      );
-    }
-  };
-
-  const subscribeProvider = async (connection: any) => {
-    connection.on('close', () => {
-      disconnectLyra();
-    });
-    connection.on('accountsChanged', async (authStatus: string[]) => {
-      if (isAuthenticated?) {
-        setUserType(authStatus[0]);
-        //const provider = new axios.get(connection);
-        getBalance(provider, accounts[0]);
-      } else {
-        disconnectLyra();
-      }
-    });
-  };
-
-  return (
-    <WalletContext.Provider
-      value={{
-        isAuthenticated,
-        authType,
-        balance,
-        loading,
-        error,
-        connectToLyra,
-        disconnectLyra,
-      }}
-    >
-      {children}
-    </WalletContext.Provider>
-  );
-};
+  export {
+    user,
+    setUser
+  }
+}
+// default useLyra;
