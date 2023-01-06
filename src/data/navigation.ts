@@ -4,26 +4,6 @@ import ncNanoId from "utils/ncNanoId";
 const otherPageChildMenus: NavItemType[] = [
   {
     id: ncNanoId(),
-    href: "/",
-    name: "Home Demo 1",
-  },
-  {
-    id: ncNanoId(),
-    href: "/home2",
-    name: "Home Demo 2",
-  },
-  {
-    id: ncNanoId(),
-    href: "/developers",
-    name: "Developers",
-  },
-  {
-    id: ncNanoId(),
-    href: "/cli",
-    name: "CLI"
-  },
-  {
-    id: ncNanoId(),
     href: "/page-collection",
     name: "Collection page",
   },
@@ -49,15 +29,9 @@ const otherPageChildMenus: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/page-upload-item",
+    href: "/my-gitnft",
     name: "Upload Item",
   },
-  {
-    id: ncNanoId(),
-    href: "/connect-wallet",
-    name: "Connect Wallet",
-  },
-
   {
     id: ncNanoId(),
     href: "/about",

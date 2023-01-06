@@ -61,7 +61,7 @@ const MainNav2Logged: FC<MainNav2LoggedProps> = () => {
             </div>
             <div></div>
             <ButtonPrimary
-              href="/page-upload-item"
+              href="/my-gitnft"
               sizeClass="px-4 py-2 sm:px-5"
             >
               Create

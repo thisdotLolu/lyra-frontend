@@ -15,7 +15,7 @@ export interface LocationStates {
   "/page-search"?: {};
   "/page-author"?: {};
   "/my-wallet"?: {};
-  "/page-upload-item"?: {};
+  "/my-gitnft"?: {};
   "/home-header-2"?: {};
   "/connect-wallet"?: {};
   "/account"?: {};

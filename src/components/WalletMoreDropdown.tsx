@@ -2,6 +2,9 @@ import React, { FC, useState } from "react";
 import NcDropDown, { NcDropDownItem } from "shared/NcDropDown/NcDropDown";
 import ModalDelete from "./ModalDelete";
 import ModalEdit from "./ModalEdit";
+import ModalRegenerate from "./ModalRegenerate";
+import ModalWithdraw from "./ModalWithdraw";
+import ModalFund from "./ModalFund";
 import ModalReportItem from "./ModalReportItem";
 import ModalTransferToken from "./ModalTransferToken";
 
@@ -16,6 +19,8 @@ const actionsDefault: WalletMoreDropdownProps["actions"] = [
   { id: "edit", name: "Change price", icon: "las la-dollar-sign" },
   { id: "transferToken", name: "Transfer token", icon: "las la-sync" },
   { id: "regenerate", name: "Regenerate Wallet", icon: "las la-flag" },
+  { id: "fund", name: "Fund Wallet", icon: "las la-hippo" },
+  { id: "withdraw", name: "Withdraw Wallet", icon: "las la-hippo" },
   { id: "delete", name: "Delete item", icon: "las la-trash-alt" },
 ];
 
@@ -28,11 +33,19 @@ const WalletMoreDropdown: FC<WalletMoreDropdownProps> = ({
   const [isEditting, setIsEditting] = useState(false);
   const [isReporting, setIsReporting] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
+  const [isWithdrawing, setIsWithdrawing] = useState(false);
+  const [isFunding, setIsFunding] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isTransfering, setIsTransfering] = useState(false);
 
   const openModalEdit = () => setIsEditting(true);
   const closeModalEdit = () => setIsEditting(false);
+ 
+  const openModalWithdraw = () => setIsWithdrawing(true);
+  const closeModalWithdraw = () => setIsWithdrawing(false);  
+ 
+  const openModalFund = () => setIsFunding(true);
+  const closeModalFund = () => setIsFunding(false);
 
   const openModalReport = () => setIsReporting(true);
   const closeModalReport = () => setIsReporting(false);
@@ -59,6 +72,12 @@ const WalletMoreDropdown: FC<WalletMoreDropdownProps> = ({
     }
     if (item.id === "delete") {
       return openModalDelete();
+    }
+    if (item.id === "fund") {
+      return openModalFund();
+    }
+    if (item.id === "withdraw") {
+      return openModalTransferToken();
     }
     if (item.id === "transferToken") {
       return openModalTransferToken();
@@ -90,6 +109,9 @@ const WalletMoreDropdown: FC<WalletMoreDropdownProps> = ({
         onCloseModalReportItem={closeModalReport}
       />
       <ModalEdit show={isEditting} onCloseModalEdit={closeModalEdit} />
+      <ModalFund show={isFunding} onCloseModalFund={closeModalFund} />
+      <ModalRegenerate show={isRegenerating} onCloseModalRegenerate={closeModalRegenerate} />
+	<ModalWithdraw show={isWithdrawing} onCloseModalWithdraw={closeModalWithdraw} />
 
       <ModalDelete show={isDeleting} onCloseModalDelete={closeModalDelete} />
       <ModalTransferToken

@@ -30,7 +30,7 @@ const widgetMenus: WidgetFooterMenu[] = [
       { href: "/cli", label: "Command-Line Interface" },
       { href: "/faq/opensource", label: "Open Source" },
       { href: "/faq/security", label: "Security" },
-      { href: "/developers/api", label: "API reference" },
+      { href: "/developers", label: "API reference" },
     ],
   },
   {

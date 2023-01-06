@@ -16,10 +16,10 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "", children }) => {
       <div className="flex flex-col lg:flex-row lg:items-center">
         <div className="flex-shrink-0 lg:w-1/2 flex flex-col items-start space-y-8 sm:space-y-10 pb-14 lg:pb-36 xl:pb-60 xl:pr-14 lg:mr-10 xl:mr-0">
           <h2 className="font-semibold text-4xl md:text-5xl xl:text-6xl !leading-[114%] ">
-            Locate, fund and sell extraordinary GitNFT's 🖼
+            Locate, propose and fund extraordinary GitNFT's 🖼
           </h2>
           <span className="text-base md:text-lg text-neutral-500 dark:text-neutral-400">
-            Discover the most outstanding resources for product development and angel funding on GitHub
+            Discover the most outstanding resources for product development and angel investing on GitHub
 	  </span>
           <ButtonPrimary>
             <span>Start your search</span>

@@ -31,7 +31,7 @@ const ModalWithdraw: FC<ModalWithdrawProps> = ({ show, onCloseModalWithdraw }) =
     return (
       <form action="#">
         <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-200">
-          Fund Wallet
+          Change price
         </h3>
         <span className="text-sm">Are you sure you want to change price?</span>
         <div className="mt-8 relative rounded-md shadow-sm">
